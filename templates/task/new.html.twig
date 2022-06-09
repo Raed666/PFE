@@ -1,0 +1,189 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New User{% endblock %}
+{% block head %}
+<link rel="icon" href=" assets/images/favicon.ico" type="image/x-icon">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href=" bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href=" assets/icon/themify-icons/themify-icons.css">
+
+    <link rel="stylesheet" type="text/css" href=" assets/icon/icofont/css/icofont.css">
+
+    <link rel="stylesheet" type="text/css" href=" assets/icon/feather/css/feather.css">
+
+    <link rel="stylesheet" type="text/css" href=" assets/pages/j-pro/css/demo.css">
+    <link rel="stylesheet" type="text/css" href=" assets/pages/j-pro/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href=" assets/pages/j-pro/css/j-pro-modern.css">
+
+    <link rel="stylesheet" type="text/css" href=" assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href=" assets/css/jquery.mCustomScrollbar.css">
+{% endblock %}
+{% block body %}
+     <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+
+                            <div class="main-body">
+                                <div class="page-wrapper">
+
+                                    <div class="page-header">
+                                        <div class="row align-items-end">
+                                            <div class="col-lg-8">
+                                                <div class="page-header-title">
+                                                    <div class="d-inline">
+                                                        <h4>Registration</h4>
+                                                        <span>lorem ipsum dolor sit amet, consectetur adipisicing
+                                                            elit</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="page-header-breadcrumb">
+                                                    <ul class="breadcrumb-title">
+                                                        <li class="breadcrumb-item" style="float: left;">
+                                                            <a href="../index.html"> <i class="feather icon-home"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li class="breadcrumb-item" style="float: left;"><a
+                                                                href="#!">Ready To Use</a>
+                                                        </li>
+                                                        <li class="breadcrumb-item" style="float: left;"><a
+                                                                href="#!">Registration Form</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="page-body">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h5>New Project</h5>
+                                                        
+                                                           
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <div class="j-wrapper j-wrapper-640">
+                                                        
+                                                        {{ form_start(form,{'attr': {'class': 'j-pro','id':'j-pro'}})  }}
+                                                            
+                                                                
+                                                                <div class="j-content">
+
+                                                                    <div>
+                                                                        <label class="j-label">Label</label>
+                                                                        <div class="j-unit">
+                                                                            <div class="j-input">
+                                                                                <label class="j-icon-right" for="lable">
+                                                                                   
+                                                                                </label>
+                                                                                
+                                                                                    {{ form_widget(form.label,{'attr': {'id':'lable'}}) }}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <label class="j-label">state</label>
+                                                                        <div class="j-unit">
+                                                                            <div class="j-input">
+                                                                                <label class="j-icon-right" for="state">
+                                                                                 
+                                                                                </label>
+                                                                                {{ form_widget(form.state,{'attr': {'id':'state'}}) }}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div>
+                                                                        <div>
+                                                                            <label class="j-label">Project</label>
+                                                                        </div>
+                                                                        <div class="j-unit">
+                                                                            <div class="j-input">
+                                                                                <label class="j-icon-right" for="Project">
+                                                                                  
+                                                                                </label>
+                                                                                {{ form_widget(form.Project,{'attr': {'id':'Project'}}) }}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <div>
+                                                                            <label class="j-label">Employer</label>
+                                                                          </div>
+                                                                          <div class="j-unit">
+                                                                            <div class="j-input">
+                                                                                <label class="j-icon-right" for="Employee">
+                                                                                  
+                                                                                </label>
+                                                                                {{ form_widget(form.Employee,{'attr': {'id':'Employee'}}) }}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                     <div>
+                                                                        <div>
+                                                                            <label class="j-label">description</label>
+                                                                          </div>
+                                                                          <div class="j-unit">
+                                                                            <div class="j-input">
+                                                                                <label class="j-icon-right" for="description">
+                                                                                  
+                                                                                </label>
+                                                                                {{ form_widget(form.description,{'attr': {'id':'description'}}) }}
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                  
+
+
+                                                                    
+
+
+                                                                   
+
+
+                                                                   
+
+
+                                                                    <div class="j-response"></div>
+
+                                                                </div>
+                                                                 <div class="form-check">
+
+     
+
+
+                                                                <div class="j-footer">
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary" >{{ button_label|default('Save') }}</button>
+                                                                </div>
+
+                                                            
+                                                           {{ form_end(form) }}
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div id="styleSelector">
+                            </div>
+                        </div>
+                    </div>
+                    
+{% endblock %}

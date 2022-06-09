@@ -1,0 +1,215 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+{% block head %}
+ <link rel="icon" href=" assets/images/favicon.ico" type="image/x-icon">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href=" bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href=" bower_components/font-awesome/css/font-awesome.min.css">
+
+    <link rel="stylesheet" type="text/css"
+        href=" assets/pages/advance-elements/css/bootstrap-datetimepicker.css">
+
+    <link rel="stylesheet" type="text/css"
+        href=" bower_components/bootstrap-daterangepicker/daterangepicker.css" />
+
+    <link rel="stylesheet" type="text/css" href=" bower_components/datedropper/datedropper.min.css" />
+
+    <link rel="stylesheet" type="text/css"
+        href=" bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+
+    <link rel="stylesheet" type="text/css" href=" assets/icon/themify-icons/themify-icons.css">
+
+    <link rel="stylesheet" type="text/css" href=" assets/icon/icofont/css/icofont.css">
+
+    <link rel="stylesheet" type="text/css" href=" assets/icon/feather/css/feather.css">
+
+    <link rel="stylesheet" type="text/css" href=" assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href=" assets/css/jquery.mCustomScrollbar.css">
+
+{% endblock %}
+
+{% block body %}
+    <h1>User</h1>
+
+   <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+
+                            <div class="main-body">
+                                <div class="page-wrapper">
+
+                                    
+
+
+                                    <div class="page-body">
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="cover-profile">
+                                                    <div class="profile-bg-img">
+                                                        <img class="profile-bg-img img-fluid"
+                                                            src=" assets/images/user-profile/bg-img1.jpg"
+                                                            alt="bg-img">
+                                                        <div class="card-block user-info">
+                                                            <div class="col-md-12">
+                                                                <div class="media-left">
+                                                                    <a href="#" class="profile-image">
+                                                                        <img class="user-img img-radius"
+                                                                            src=" assets/images/user-profile/raed.jpg"
+                                                                            alt="user-img">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="media-body row">
+                                                                    <div class="col-lg-12">
+                                                                        <div class="user-title">
+                                                                            <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+                                                                            <span class="text-white">{{ user.jobTitle }}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                   
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-12">
+
+                                                <div class="tab-header card">
+                                                    <ul class="nav nav-tabs md-tabs tab-timeline" role="tablist"
+                                                        id="mytab">
+                                                        <li class="nav-item">
+                                                            <a class="nav-link active" data-toggle="tab"
+                                                                href="#personal" role="tab">Personal Info</a>
+                                                            <div class="slide"></div>
+                                                        </li>
+                                                    
+                                                    </ul>
+                                                </div>
+
+
+                                                <div class="tab-content">
+
+                                                    <div class="tab-pane active" id="personal" role="tabpanel">
+
+                                                        <div class="card">
+                                                            <div class="card-header">
+                                                                <h5 class="card-header-text">About Me</h5>
+                                                                <button id="edit-btn" type="button"
+                                                                    class="btn btn-sm btn-primary waves-effect waves-light f-right">
+                                                                    <i class="icofont icofont-edit"></i><a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+                                                                </button>
+                                                            </div>
+                                                            <div class="card-block">
+                                                                <div class="view-info">
+                                                                    <div class="row">
+                                                                        <div class="col-lg-12">
+                                                                            <div class="general-info">
+                                                                                <div class="row">
+                                                                                    <div class="col-lg-12 col-xl-6">
+                                                                                        <div class="table-responsive">
+                                                                                            <table class="table m-0">
+                                                                                                <tbody>
+                                                                                                    <tr>
+                                                                                                        <th scope="row">
+                                                                                                            First Name
+                                                                                                        </th>
+                                                                                                        <td>{{ user.firstName }}</td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <th scope="row">
+                                                                                                            Last Name</th>
+                                                                                                        <td>{{ user.lastName }}</td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <th scope="row">
+                                                                                                            Craeted At
+                                                                                                        </th>
+                                                                                                        <td>{{ user.createdAt ? user.createdAt|date('Y-m-d') : '' }}
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <th scope="row">
+                                                                                                            Username
+                                                                                                            </th>
+                                                                                                        <td>{{ user.Username }}</td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <th scope="row">
+                                                                                                            Job Title
+                                                                                                        </th>
+                                                                                                        <td>{{ user.jobTitle }}</td>
+                                                                                                    </tr>
+                                                                                                </tbody>
+                                                                                            </table>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="col-lg-12 col-xl-6">
+                                                                                        <div class="table-responsive">
+                                                                                            <table class="table">
+                                                                                                <tbody>
+                                                                                                    <tr>
+                                                                                                        <th scope="row">
+                                                                                                            Email</th>
+                                                                                                        <td>{{ user.email }}
+                                                                                                        </td>
+                                                                                                    </tr>
+                                                                                                    <tr>
+                                                                                                        <th scope="row">
+                                                                                                            Mobile
+                                                                                                            Number</th>
+                                                                                                        <td>{{ user.phoneNumber }}</td>
+                                                                                                    </tr>
+                                                                                                    
+                                                                                                </tbody>
+                                                                                            </table>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                </div>
+
+                                                                </div>
+
+                                                            </div>
+
+                                                        </div>
+                                                 
+                                                    </div>
+
+                                                 <button class="btn btn-success"><a href="{{ path('app_user_index') }}">back to list</a></button>
+                                                   
+
+
+                                                    
+                                                           
+                                                       
+                                                   
+
+                                                   
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+    
+
+    
+
+    
+{% endblock %}

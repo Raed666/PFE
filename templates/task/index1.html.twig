@@ -1,0 +1,448 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TaskDetailController!{% endblock %}
+{% block head %}
+ <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="#">
+    <meta name="keywords"
+        content="Admin , Responsive, Landing, Bootstrap, App, Template, Mobile, iOS, Android, apple, creative app">
+    <meta name="author" content="#">
+
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,800" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="bower_components/switchery/dist/switchery.min.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/icon/simple-line-icons/css/simple-line-icons.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/icon/themify-icons/themify-icons.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/icon/icofont/css/icofont.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/icon/feather/css/feather.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.mCustomScrollbar.css">
+
+
+{% endblock %}
+
+
+
+{% block body %}
+ <div class="pcoded-content">
+                        <div class="pcoded-inner-content">
+
+                            <div class="main-body">
+                                <div class="page-wrapper">
+
+                                    <div class="page-header">
+                                        <div class="row align-items-end">
+                                            <div class="col-lg-8">
+                                                <div class="page-header-title">
+                                                    <div class="d-inline">
+                                                        <h4>Task Traking</h4>
+                                                       
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                                <div class="page-header-breadcrumb">
+                                                    <ul class="breadcrumb-title">
+                                                        <li class="breadcrumb-item" style="float: left;">
+                                                            <a href="../index.html"> <i class="feather icon-home"></i>
+                                                            </a>
+                                                        </li>
+                                                        <li class="breadcrumb-item" style="float: left;"><a
+                                                                href="#!">Task</a>
+                                                        </li>
+                                                        <li class="breadcrumb-item" style="float: left;"><a
+                                                                href="#!">Task-Detail</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="page-body">
+                                        <div class="row">
+
+                                            <div class="col-xl-4 col-lg-12 push-xl-8 task-detail-right">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h5 class="card-header-text"><i
+                                                                class="icofont icofont-clock-time m-r-10"></i>Task Timer
+                                                        </h5>
+                                                    </div>
+                                                    <div class="card-block">
+                                                      <div class="tim"><h5>
+  	                                                    <span1 id="Time_1">0 Heure</span1> :
+                                                    	<span1 id="Time_2">0 Minute</span1> :
+  	                                                    <span1 id="Time_3">0 Second</span1> 
+  	                                                    </h5>
+                                                      </div>
+                                                       
+
+                                                    </div>
+                                                    <div class="card-footer">
+                                               
+                                                        <div class="f-right">
+                                                            <div class="dropdown-secondary dropdown">
+                                                                  <button class= "btn btn-primary btn-round" id="start" onclick="start()">Start</button>
+                                                        <button class="btn btn-danger btn-round" id="stop" onclick="stop()" >Stop</button>
+                                                         <button class="btn btn-inverse btn-round" id="reset" onclick="reset()" >Reset</button>
+                                                         <button class="btn btn-success btn-round" onclick="saveTime()" >Save</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h5 class="card-header-text"><i
+                                                                class="icofont icofont-ui-note m-r-10"></i> Task Details
+                                                        </h5>
+                                                    </div>
+                                                    <div class="card-block task-details">
+                                                        <table class="table table-border table-xs">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td><i class="icofont icofont-contrast"></i>
+                                                                        Project:</td>
+                                                                    <td class="text-right"><span class="f-right"><a
+                                                                                href="#"> {{ task.project.getLabel }}</a></span></td>
+                                                                </tr>
+                                                               
+                                                               
+                                                                <tr>
+                                                                   
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><i class="icofont icofont-spinner-alt-3"></i>
+                                                                        Statut:</td>
+                                                                    <td class="text-right">{{ task.state }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><i class="icofont icofont-ui-love-add"></i>
+                                                                        Added by:</td>
+                                                                    <td class="text-right"><a href="#">{{ task.project.manager.username}}</a></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><i class="icofont icofont-washing-machine"></i>
+                                                                        Affected To:</td>
+                                                                    <td class="text-right">{{ task.Employee.getUsername}}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <div>
+                                                            <span>
+                                                                <a href="#!" class="text-muted m-r-10 f-16"><i
+                                                                        class="icofont icofont-random"></i> </a>
+                                                            </span>
+                                                            <span class="m-r-10">
+                                                                <a href="#!" class="text-muted f-16"><i
+                                                                        class="icofont icofont-options"></i></a>
+                                                            </span>
+                                                            <div class="dropdown-secondary dropdown d-inline-block">
+                                                                <button
+                                                                    class="btn btn-sm btn-primary dropdown-toggle waves-light"
+                                                                    type="button" id="dropdown3" data-toggle="dropdown"
+                                                                    aria-haspopup="true" aria-expanded="false"><i
+                                                                        class="icofont icofont-navigation-menu"></i></button>
+                                                                <div class="dropdown-menu" aria-labelledby="dropdown3"
+                                                                    data-dropdown-in="fadeIn"
+                                                                    data-dropdown-out="fadeOut">
+                                                                    <a class="dropdown-item waves-light waves-effect"
+                                                                        href="#!"><i
+                                                                            class="icofont icofont-checked m-r-10"></i>Check
+                                                                        in</a>
+                                                                    <a class="dropdown-item waves-light waves-effect"
+                                                                        href="#!"><i
+                                                                            class="icofont icofont-attachment m-r-10"></i>Attach
+                                                                        screenshot</a>
+                                                                    <a class="dropdown-item waves-light waves-effect"
+                                                                        href="#!"><i
+                                                                            class="icofont icofont-rotation m-r-10"></i>Reassign</a>
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <a class="dropdown-item waves-light waves-effect"
+                                                                        href="#!"><i
+                                                                            class="icofont icofont-edit-alt m-r-10"></i>Edit
+                                                                        task</a>
+                                                                    <a class="dropdown-item waves-light waves-effect"
+                                                                        href="#!"><i
+                                                                            class="icofont icofont-close m-r-10"></i>Remove</a>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                             
+                                             
+                                            </div>
+
+
+                                            <div class="col-xl-8 col-lg-12 pull-xl-4">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h5><i class="icofont icofont-tasks-alt m-r-5"></i> Ticket List
+                                                            Doesn't Support Commas</h5>
+                                                        <button class="btn btn-sm btn-primary f-right"><a href="{{ path('app_task_editstatut', {'id': task.id}) }}"><i
+                                                                class="icofont icofont-ui-alarm"></i>Check in</button>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <div class="">
+                                                            <div class="m-b-20">
+                                                                <h6 class="sub-title m-b-15"> {{ task.label }}</h6>
+                                                                <p>
+                                                                    {{ task.description }}
+                                                                </p>
+                                                            </div>
+                                                            
+                                                           
+                                                            
+                                                           
+                                                        
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <div class="f-left">
+                                                            <span class=" txt-primary"> <i
+                                                                    class="icofont icofont-chart-line-alt"></i>
+                                                                Status:</span>
+                                                            <div class="dropdown-secondary dropdown d-inline-block">
+                                                                <button
+                                                                    class="btn btn-sm btn-primary dropdown-toggle waves-light"
+                                                                    type="button" id="dropdown4" data-toggle="dropdown"
+                                                                    aria-haspopup="true"
+                                                                    aria-expanded="false">Open</button>
+                                                                <div class="dropdown-menu" aria-labelledby="dropdown4"
+                                                                    data-dropdown-in="fadeIn"
+                                                                    data-dropdown-out="fadeOut">
+                                                                    <a class="dropdown-item waves-light waves-effect active"
+                                                                        href="#!">Open</a>
+                                                                    <a class="dropdown-item waves-light waves-effect"
+                                                                        href="#!">On hold</a>
+                                                                    <a class="dropdown-item waves-light waves-effect"
+                                                                        href="#!">Resolved</a>
+                                                                    <a class="dropdown-item waves-light waves-effect"
+                                                                        href="#!">Closed</a>
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <a class="dropdown-item waves-light waves-effect"
+                                                                        href="#!">Dublicate</a>
+                                                                    <a class="dropdown-item waves-light waves-effect"
+                                                                        href="#!">Invalid</a>
+                                                                    <a class="dropdown-item waves-light waves-effect"
+                                                                        href="#!">Wontfix</a>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="f-right d-flex">
+                                                            <span>
+                                                                <a href="#!" class="text-muted m-r-10 f-16"><i
+                                                                        class="icofont icofont-edit"></i> </a>
+                                                            </span>
+                                                            <span class="m-r-10">
+                                                                <a href="#!" class="text-muted f-16"><i
+                                                                        class="icofont icofont-ui-delete"></i></a>
+                                                            </span>
+                                                            <div class="dropdown-secondary dropdown d-inline-block">
+                                                                <button
+                                                                    class="btn btn-sm btn-primary dropdown-toggle waves-light bg-white b-none txt-muted"
+                                                                    type="button" id="dropdown5" data-toggle="dropdown"
+                                                                    aria-haspopup="true" aria-expanded="false"><i
+                                                                        class="icofont icofont-navigation-menu"></i></button>
+                                                                <div class="dropdown-menu" aria-labelledby="dropdown5"
+                                                                    data-dropdown-in="fadeIn"
+                                                                    data-dropdown-out="fadeOut">
+                                                                    <a class="dropdown-item waves-light waves-effect"
+                                                                        href="#!"><i
+                                                                            class="icofont icofont-ui-alarm m-r-10"></i>Check
+                                                                        in</a>
+                                                                    <a class="dropdown-item waves-light waves-effect"
+                                                                        href="#!"><i
+                                                                            class="icofont icofont-attachment m-r-10"></i>Attach
+                                                                        screenshot</a>
+                                                                    <a class="dropdown-item waves-light waves-effect"
+                                                                        href="#!"><i
+                                                                            class="icofont icofont-spinner-alt-5 m-r-10"></i>Reassign</a>
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <a class="dropdown-item waves-light waves-effect"
+                                                                        href="#!"><i
+                                                                            class="icofont icofont-ui-edit m-r-10"></i>Edit
+                                                                        task</a>
+                                                                    <a class="dropdown-item waves-light waves-effect"
+                                                                        href="#!"><i
+                                                                            class="icofont icofont-close-line m-r-10"></i>Remove</a>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                              
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div id="styleSelector">
+                            </div>
+                        </div>
+                    </div>
+
+       </div>
+       
+    </div>
+
+  
+{% endblock %}
+{% block script %}
+
+
+
+
+<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="bower_components/popper.js/dist/umd/popper.min.js"></script>
+<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="bower_components/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+<script type="text/javascript" src="bower_components/modernizr/modernizr.js"></script>
+<script type="text/javascript" src="bower_components/modernizr/feature-detects/css-scrollbars.js"></script>
+
+<script src="bower_components/countdown/dest/jquery.countdown.js"></script>
+<script src="assets/pages/counter/task-detail.js"></script>
+
+<script type="text/javascript" src="bower_components/switchery/dist/switchery.min.js"></script>
+
+<script type="text/javascript" src="bower_components/i18next/i18next.min.js"></script>
+<script type="text/javascript" src="bower_components/i18next-xhr-backend/i18nextXHRBackend.min.js"></script>
+<script type="text/javascript" src="bower_components/i18next-browser-languagedetector/i18nextBrowserLanguageDetector.min.js"></script>
+<script type="text/javascript" src="bower_components/jquery-i18next/jquery-i18next.min.js"></script>
+<script src="assets/js/pcoded.min.js"></script>
+<script src="assets/js/vartical-layout.min.js"></script>
+<script src="assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+
+<script>
+        // Multiple swithces
+        var elem = Array.prototype.slice.call(document.querySelectorAll('.js-small'));
+
+        elem.forEach(function (html) {
+            var switchery = new Switchery(html, {
+                color: '#1abc9c',
+                jackColor: '#fff',
+                size: 'small'
+            });
+        });
+
+    </script>
+
+<script type="text/javascript" src="assets/js/script.js"></script>
+<script type="text/javascript">
+  /*la fonction getElementByTagName renvoie une liste des éléments portant le nom de balise donné ici "span".*/
+  var sp = document.getElementsByTagName("span1");
+  var btn_start=document.getElementById("start");
+  var btn_stop=document.getElementById("stop");
+  var t;
+  var ms=0,s=0,mn=0,h=0;
+   
+   /*La fonction "start" démarre un appel répétitive de la fonction update_chrono par une cadence de 100 milliseconde en utilisant setInterval et désactive le bouton "start" */
+
+  function start(){
+   t =setInterval(update_chrono,100);
+   btn_start.disabled=true;
+  
+  }
+  /*La fonction update_chrono incrémente le nombre de millisecondes par 1 <==> 1*cadence = 100 */
+  function update_chrono(){
+    ms+=1;
+    /*si ms=10 <==> ms*cadence = 1000ms <==> 1s alors on incrémente le nombre de secondes*/
+       if(ms==10){
+        ms=1;
+        s+=1;
+       }
+       /*on teste si s=60 pour incrémenter le nombre de minute*/
+       if(s==60){
+        s=0;
+        mn+=1;
+       }
+       if(mn==60){
+        mn=0;
+        h+=1;
+       }
+       /*afficher les nouvelle valeurs*/
+       sp[0].innerHTML=h+" Heure";
+       sp[1].innerHTML=mn+" Minute ";
+       sp[2].innerHTML=s+" Second";
+       
+
+  }
+  
+	/*on arrête le "timer" par clearInterval ,on réactive le bouton start */
+	function stop(){
+    clearInterval(t);
+    btn_start.disabled=false;
+		
+	}
+  /*dans cette fonction on arrête le "timer" ,on réactive le bouton "start" et on initialise les variables à zéro */
+  function reset(){
+   clearInterval(t);
+    btn_start.disabled=false;
+    ms=0,s=0,mn=0,h=0;
+    /*on accède aux différents span par leurs indice*/
+     sp[0].innerHTML=h+" Heure";
+       sp[1].innerHTML=mn+" Minute ";
+       sp[2].innerHTML=s+" Second";
+      }
+</script>
+
+ <script>
+
+
+        function saveTime() {
+           var Time_1 = document.getElementById("Time_1").innerHTML;//0 Heure
+            var Time_2 = document.getElementById("Time_2").innerHTML;//0 Minute
+            var Time_3 = document.getElementById("Time_3").innerHTML;//10 Seccond
+
+            // .........................
+
+            var Data={
+                Time: Time_1+" "+Time_2+" "+Time_3,
+                
+                Task:{{ task.id }}
+
+            };
+
+           var url = '{{ path('app_schedule_new') }}';
+            $.ajax({
+                url: url,
+                data: {'Data':JSON.stringify(Data)},
+                dataType: 'json',
+                contentType: 'application/json',
+            }).done(function (data) {
+                if (data.status === true) {
+                    console.log(data.message );
+                }else {
+                    console.log('not saved :(');
+                }
+            });
+            
+        }
+    </script>
+
+
+{% endblock %}
